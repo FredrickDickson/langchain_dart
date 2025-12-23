@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Forgot Password - ArbiBot</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetic if needed */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-xl">
+<!-- TopAppBar -->
+<div class="flex items-center p-4 pb-2 justify-between">
+<button aria-label="Go back" class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<!-- Optional: Could place a small logo here -->
+<div class="w-12"></div> <!-- Spacer to balance header -->
+</div>
+<!-- Main Content Area -->
+<div class="flex flex-col flex-1 px-4 pt-4 pb-8">
+<!-- Hero Icon/Illustration -->
+<div class="flex justify-center py-8">
+<div class="flex h-28 w-28 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20 ring-1 ring-primary/20 dark:ring-primary/10">
+<span class="material-symbols-outlined text-[56px] text-primary">lock_reset</span>
+</div>
+</div>
+<!-- HeadlineText -->
+<h1 class="text-slate-900 dark:text-white tracking-tight text-[32px] font-extrabold leading-tight text-center pb-3">
+                Forgot Password?
+            </h1>
+<!-- BodyText -->
+<p class="text-slate-600 dark:text-slate-300 text-base font-normal leading-relaxed pb-8 text-center max-w-[90%] mx-auto">
+                Don't worry, it happens. Please enter the email address associated with your ArbiBot account to receive a reset link.
+            </p>
+<!-- Form Area -->
+<form class="flex flex-col gap-6" onsubmit="event.preventDefault();">
+<!-- TextField: Email -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-white text-base font-bold leading-normal" for="email">
+                        Email Address
+                    </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">mail</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 focus:border-primary border border-slate-300 dark:border-[#3b4754] bg-white dark:bg-[#1c2127] h-14 placeholder:text-slate-400 dark:placeholder:text-[#9dabb9] pl-12 pr-4 text-base font-normal leading-normal transition-all" id="email" placeholder="attorney@example.com" required="" type="email" value=""/>
+</div>
+</div>
+<!-- Primary Action Button -->
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-5 bg-primary hover:bg-blue-600 active:bg-blue-700 text-white text-base font-bold leading-normal tracking-[0.015em] transition-colors shadow-lg shadow-primary/20 mt-2" type="submit">
+<span class="truncate">Send Reset Link</span>
+</button>
+</form>
+<div class="flex-1"></div>
+<!-- Footer / Support Link -->
+<div class="flex flex-col gap-4 mt-8 text-center">
+<p class="text-slate-500 dark:text-slate-400 text-sm">
+                    Remember your password? 
+                    <a class="font-bold text-primary hover:text-blue-400 hover:underline transition-colors" href="#">Log in</a>
+</p>
+<a class="flex items-center justify-center gap-2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 text-xs font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">support_agent</span>
+                    Contact Support
+                </a>
+</div>
+</div>
+<!-- Bottom Spacer for mobile safe areas -->
+<div class="h-5"></div>
+</div>
+</body></html>

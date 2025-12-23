@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArbiBot - Draft Input Screen</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c242d",
+                        "surface-border": "#3b4754",
+                        "text-secondary": "#9dabb9"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "md": "0.375rem", 
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101922; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b4754; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4b5966; 
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display text-gray-900 dark:text-white overflow-x-hidden antialiased">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b dark:border-surface-border border-gray-200">
+<div class="flex items-center justify-between p-4 pb-2">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-surface-border transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h2 class="text-lg font-bold leading-tight tracking-tight">Statement of Claim</h2>
+<span class="text-xs font-medium text-text-secondary">Drafting New Document</span>
+</div>
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-surface-border transition-colors text-primary">
+<span class="material-symbols-outlined text-2xl">save</span>
+</button>
+</div>
+<!-- Segmented Control / Progress -->
+<div class="px-4 pb-3 pt-1">
+<div class="flex h-10 w-full items-center justify-center rounded-lg bg-gray-200 dark:bg-[#283039] p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 bg-white dark:bg-surface-dark shadow-sm text-primary font-bold text-sm leading-normal transition-all">
+<span class="truncate">1. Parties</span>
+<input checked="" class="invisible w-0" name="nav-segment" type="radio" value="Parties"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 text-gray-500 dark:text-text-secondary hover:text-gray-900 dark:hover:text-white text-sm font-medium leading-normal transition-all">
+<span class="truncate">2. Facts</span>
+<input class="invisible w-0" name="nav-segment" type="radio" value="Facts"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 text-gray-500 dark:text-text-secondary hover:text-gray-900 dark:hover:text-white text-sm font-medium leading-normal transition-all">
+<span class="truncate">3. Reliefs</span>
+<input class="invisible w-0" name="nav-segment" type="radio" value="Reliefs"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Scrollable Content Area -->
+<div class="flex-1 flex flex-col pb-24"> <!-- pb-24 for sticky footer space -->
+<!-- Disclaimer Banner -->
+<div class="px-4 py-4">
+<div class="flex flex-row items-start gap-3 rounded-xl border border-blue-900/50 bg-blue-900/10 p-4">
+<span class="material-symbols-outlined text-primary shrink-0 mt-0.5">info</span>
+<div class="flex flex-col gap-1">
+<p class="text-sm font-bold text-white">Draft Mode Active</p>
+<p class="text-xs text-blue-200/80 leading-relaxed">ArbiBot outputs are drafts based on Ghanaian law citations. Final review by a qualified lawyer is required.</p>
+</div>
+<button class="ml-auto text-blue-200 hover:text-white">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+<!-- Section 1: Parties Involved -->
+<div class="flex flex-col gap-4">
+<h3 class="px-4 text-xl font-bold leading-tight tracking-tight flex items-center gap-2">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-primary/20 text-primary text-xs font-bold">1</span>
+                Parties Involved
+            </h3>
+<!-- Party Card 1 -->
+<div class="mx-4 p-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-200 dark:border-surface-border shadow-sm">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person</span>
+<span class="font-bold text-sm uppercase tracking-wider text-text-secondary">Party 01</span>
+</div>
+<button class="text-text-secondary hover:text-red-400">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<div class="space-y-4">
+<!-- Role Select -->
+<label class="flex flex-col w-full">
+<span class="text-sm font-medium pb-1.5 text-gray-700 dark:text-gray-300">Role</span>
+<div class="relative">
+<select class="w-full appearance-none rounded-lg border border-gray-300 dark:border-surface-border bg-gray-50 dark:bg-[#111418] h-12 px-4 text-base focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all">
+<option>Plaintiff</option>
+<option>Defendant</option>
+<option>Applicant</option>
+<option>Respondent</option>
+</select>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-text-secondary">
+<span class="material-symbols-outlined">expand_more</span>
+</span>
+</div>
+</label>
+<!-- Name Input -->
+<label class="flex flex-col w-full">
+<span class="text-sm font-medium pb-1.5 text-gray-700 dark:text-gray-300">Full Legal Name</span>
+<input class="w-full rounded-lg border border-gray-300 dark:border-surface-border bg-gray-50 dark:bg-[#111418] h-12 px-4 text-base focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-text-secondary transition-all" placeholder="e.g. Ama Ghana Ltd." type="text" value="Kofi Mensah"/>
+</label>
+<!-- Address Input -->
+<label class="flex flex-col w-full">
+<span class="text-sm font-medium pb-1.5 text-gray-700 dark:text-gray-300">Jurisdiction / Address</span>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary">
+<span class="material-symbols-outlined text-lg">location_on</span>
+</span>
+<input class="w-full rounded-lg border border-gray-300 dark:border-surface-border bg-gray-50 dark:bg-[#111418] h-12 pl-11 pr-4 text-base focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-text-secondary transition-all" placeholder="City, Region" type="text"/>
+</div>
+</label>
+</div>
+</div>
+<!-- Party Card 2 (Collapsed/New) -->
+<div class="mx-4 p-4 rounded-xl border border-dashed border-gray-300 dark:border-surface-border hover:bg-gray-50 dark:hover:bg-surface-dark/50 transition-colors cursor-pointer group">
+<div class="flex items-center justify-center gap-2 text-text-secondary group-hover:text-primary">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-medium">Add Another Party</span>
+</div>
+</div>
+</div>
+<div class="h-px bg-gray-200 dark:bg-surface-border mx-4 my-6"></div>
+<!-- Section 2: The Facts -->
+<div class="flex flex-col gap-4">
+<h3 class="px-4 text-xl font-bold leading-tight tracking-tight flex items-center gap-2">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-gray-200 dark:bg-surface-border text-gray-600 dark:text-gray-400 text-xs font-bold">2</span>
+                The Facts
+            </h3>
+<div class="mx-4">
+<label class="block relative">
+<span class="sr-only">Facts of the case</span>
+<textarea class="w-full min-h-[160px] rounded-xl border border-gray-300 dark:border-surface-border bg-white dark:bg-surface-dark p-4 text-base focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-text-secondary resize-none leading-relaxed" placeholder="Describe the material facts of the case here. Be specific about dates, events, and agreements breached..."></textarea>
+<!-- Voice Input Button -->
+<button class="absolute right-3 bottom-3 p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors group" title="Dictate Facts">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">mic</span>
+</button>
+</label>
+<!-- File Upload Helper -->
+<div class="mt-3 flex items-center justify-between">
+<p class="text-xs text-text-secondary">Supported: PDF, DOCX (Max 10MB)</p>
+<button class="flex items-center gap-1.5 text-xs font-medium text-primary hover:text-blue-400 transition-colors">
+<span class="material-symbols-outlined text-sm">upload_file</span>
+                        Upload Case Files
+                    </button>
+</div>
+</div>
+</div>
+<div class="h-px bg-gray-200 dark:bg-surface-border mx-4 my-6"></div>
+<!-- Section 3: Reliefs Sought -->
+<div class="flex flex-col gap-4">
+<h3 class="px-4 text-xl font-bold leading-tight tracking-tight flex items-center gap-2">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-gray-200 dark:bg-surface-border text-gray-600 dark:text-gray-400 text-xs font-bold">3</span>
+                Reliefs Sought
+            </h3>
+<div class="mx-4 flex flex-col gap-3">
+<p class="text-sm text-text-secondary">Select common reliefs or specify custom demands.</p>
+<!-- AI Chips -->
+<div class="flex flex-wrap gap-2">
+<button class="group flex items-center gap-1.5 rounded-full border border-primary bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary transition-all">
+<span class="material-symbols-outlined text-base">check</span>
+                        General Damages
+                    </button>
+<button class="group flex items-center gap-1.5 rounded-full border border-gray-300 dark:border-surface-border bg-white dark:bg-surface-dark hover:border-primary hover:text-primary px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-300 transition-all">
+<span class="material-symbols-outlined text-base opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all w-0 group-hover:w-auto overflow-hidden">add</span>
+                        Injunction
+                    </button>
+<button class="group flex items-center gap-1.5 rounded-full border border-gray-300 dark:border-surface-border bg-white dark:bg-surface-dark hover:border-primary hover:text-primary px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-300 transition-all">
+<span class="material-symbols-outlined text-base opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all w-0 group-hover:w-auto overflow-hidden">add</span>
+                        Specific Performance
+                    </button>
+<button class="group flex items-center gap-1.5 rounded-full border border-gray-300 dark:border-surface-border bg-white dark:bg-surface-dark hover:border-primary hover:text-primary px-3 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-300 transition-all">
+<span class="material-symbols-outlined text-base opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all w-0 group-hover:w-auto overflow-hidden">add</span>
+                        Costs
+                    </button>
+</div>
+<!-- Custom Relief Input -->
+<label class="flex flex-col w-full mt-2">
+<span class="sr-only">Specific Relief Details</span>
+<input class="w-full rounded-lg border border-gray-300 dark:border-surface-border bg-gray-50 dark:bg-[#111418] h-12 px-4 text-base focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-text-secondary transition-all" placeholder="e.g. Payment of GHS 50,000..." type="text"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Sticky Footer -->
+<div class="fixed bottom-0 w-full p-4 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-xl border-t dark:border-surface-border border-gray-200 z-50">
+<div class="flex flex-col gap-3 max-w-lg mx-auto">
+<button class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary hover:bg-blue-600 py-3.5 px-6 text-white shadow-lg shadow-blue-500/20 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-bold text-base">Initialize ArbiBot Agents</span>
+</button>
+<p class="text-center text-[10px] uppercase tracking-widest text-text-secondary font-semibold opacity-70">
+                ArbiBot v2.0 • Secure Environment
+            </p>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArbiBot - Sign Up</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner mobile view */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl bg-white dark:bg-background-dark">
+<!-- Top Navigation -->
+<div class="flex items-center p-4 pb-2 justify-between">
+<button class="flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex-1"></div> <!-- Spacer to push nothing to right, centered by logic or just left align back -->
+</div>
+<!-- Header / Logo Area -->
+<div class="flex flex-col items-center px-6 pt-4 pb-8">
+<div class="mb-6 relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-2xl h-24 w-24 shadow-lg ring-1 ring-white/10" data-alt="Abstract geometric logo representing AI and law structure in blue and dark tones" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCO4zViB-YnkrmVUdn2TGPR7exA8r9xTIYe_MciDZkDzABzIDKT6Qi9loLyp9nGyiPP-NbN3MU6d6WaKptsIdLeMumEDCW0-lUZVNzK8c8bItUnOhziFLysxtvvkBInkwat9WdTdnl6bEvwD49Qd__N4tvK096LbYYnYHbEfkSSBvbF4mvPyGF89z_PU8KhAxL7hB7ckkPQvLg2md-gNylTemEmFK-jL5EZs8BpoTsynNM_qHfiOCSIsTXx86sjcrHS6cusA_NbJ-I");'>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-primary rounded-full p-1.5 border-4 border-white dark:border-background-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm font-bold">gavel</span>
+</div>
+</div>
+<h1 class="text-3xl font-bold leading-tight tracking-tight text-center mb-2 text-slate-900 dark:text-white">
+                Join ArbiBot
+            </h1>
+<p class="text-slate-500 dark:text-[#9dabb9] text-base font-medium text-center max-w-[80%]">
+                Your AI Legal Assistant for Ghana. Draft, research, and discover.
+            </p>
+</div>
+<!-- Sign Up Form -->
+<div class="flex-1 flex flex-col px-6 gap-5">
+<!-- Email Field -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-900 dark:text-white leading-normal">Email Address</label>
+<div class="flex w-full items-center rounded-lg border border-slate-200 dark:border-[#3b4754] bg-slate-50 dark:bg-[#1c2127] focus-within:border-primary focus-within:ring-1 focus-within:ring-primary overflow-hidden transition-all">
+<span class="material-symbols-outlined px-4 text-slate-400 dark:text-[#9dabb9]">mail</span>
+<input class="flex w-full h-12 bg-transparent text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#9dabb9] focus:outline-none border-none text-base p-0 pr-4" placeholder="lawyer@firm.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-900 dark:text-white leading-normal">Password</label>
+<div class="flex w-full items-center rounded-lg border border-slate-200 dark:border-[#3b4754] bg-slate-50 dark:bg-[#1c2127] focus-within:border-primary focus-within:ring-1 focus-within:ring-primary overflow-hidden transition-all">
+<span class="material-symbols-outlined px-4 text-slate-400 dark:text-[#9dabb9]">lock</span>
+<input class="flex w-full h-12 bg-transparent text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#9dabb9] focus:outline-none border-none text-base p-0" placeholder="Create a password" type="password"/>
+<button class="px-4 text-slate-400 dark:text-[#9dabb9] hover:text-primary transition-colors focus:outline-none">
+<span class="material-symbols-outlined">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Confirm Password Field -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-900 dark:text-white leading-normal">Confirm Password</label>
+<div class="flex w-full items-center rounded-lg border border-slate-200 dark:border-[#3b4754] bg-slate-50 dark:bg-[#1c2127] focus-within:border-primary focus-within:ring-1 focus-within:ring-primary overflow-hidden transition-all">
+<span class="material-symbols-outlined px-4 text-slate-400 dark:text-[#9dabb9]">lock_reset</span>
+<input class="flex w-full h-12 bg-transparent text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#9dabb9] focus:outline-none border-none text-base p-0" placeholder="Re-enter password" type="password"/>
+<button class="px-4 text-slate-400 dark:text-[#9dabb9] hover:text-primary transition-colors focus:outline-none">
+<span class="material-symbols-outlined">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Legal Disclaimer / Terms Checkbox -->
+<div class="flex items-start gap-3 mt-2 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30">
+<div class="flex h-6 items-center">
+<input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary bg-white dark:bg-[#1c2127] dark:border-[#3b4754]" id="terms" type="checkbox"/>
+</div>
+<div class="text-sm leading-5">
+<label class="font-medium text-slate-700 dark:text-slate-300" for="terms">
+                        I agree to the <a class="text-primary hover:underline" href="#">Terms of Service</a>.
+                    </label>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                        I acknowledge that ArbiBot outputs are drafts only and require professional human review before use.
+                    </p>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="pt-2">
+<button class="w-full rounded-lg bg-primary py-3.5 px-4 text-center text-base font-bold text-white shadow-lg shadow-primary/20 transition-transform active:scale-[0.98] hover:bg-blue-600">
+                    Sign Up
+                </button>
+</div>
+<!-- Divider -->
+<div class="relative flex py-2 items-center">
+<div class="flex-grow border-t border-slate-200 dark:border-[#3b4754]"></div>
+<span class="flex-shrink-0 mx-4 text-slate-400 dark:text-slate-500 text-sm">Or continue with</span>
+<div class="flex-grow border-t border-slate-200 dark:border-[#3b4754]"></div>
+</div>
+<!-- Social Auth -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-[#3b4754] bg-white dark:bg-[#1c2127] py-3 text-sm font-semibold text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<img alt="Google Logo" class="h-5 w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUwr89Qts389wT2DRqpEehLNjU2nAaBV4f4MQ3flYkkd8YGCwMBhErg2pF_eHw5xbmh-jcAqAhkHyGjft-InmAWoy1c3lPH-XJfIHVMFJpqPmZ3NNO4RDAxVQH23cyAkUnU-Lu93grBrLSkQo_lkYlBIj1oqyJX_2lcoHTt3LbTjh5leme2NplnjkNJ_f1LSq021qMAFmGCUnRChG8Qi61im4C1uzTYsmqhObqAB2954wN4cFhTM37ZAq7Qp_5E2eTaN14Fvwk_MM"/>
+                    Google
+                </button>
+<button class="flex items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-[#3b4754] bg-white dark:bg-[#1c2127] py-3 text-sm font-semibold text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[22px]">ios</span>
+                    Apple
+                </button>
+</div>
+<!-- Footer Link -->
+<div class="text-center py-6">
+<p class="text-sm text-slate-500 dark:text-slate-400">
+                    Already have an account? 
+                    <a class="font-bold text-primary hover:text-blue-500 transition-colors" href="#">Log In</a>
+</p>
+</div>
+<div class="h-12"></div> <!-- Bottom spacer for scroll -->
+</div>
+</div>
+</body></html>

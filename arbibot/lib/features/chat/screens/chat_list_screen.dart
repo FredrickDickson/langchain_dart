@@ -1,9 +1,116 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:arbibot/core/theme/app_theme.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:arbibot/features/common/repositories/database_repository.dart';
+import 'package:arbibot/features/auth/repositories/auth_repository.dart';
 
-class ChatListScreen extends StatelessWidget {
+class ChatListScreen extends ConsumerStatefulWidget {
   const ChatListScreen({super.key});
+
+  @override
+  ConsumerState<ChatListScreen> createState() => _ChatListScreenState();
+}
+
+class _ChatListScreenState extends ConsumerState<ChatListScreen> {
+  List<Map<String, dynamic>> _chats = [];
+  bool _isLoading = true;
+  String _searchQuery = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadChats();
+  }
+
+  Future<void> _loadChats() async {
+    setState(() => _isLoading = true);
+    try {
+      final userId = ref.read(authRepositoryProvider).currentUser?.id;
+      if (userId != null) {
+        final chats = await ref.read(databaseRepositoryProvider).getChats(userId);
+        if (mounted) {
+          setState(() {
+            _chats = chats;
+            _isLoading = false;
+          });
+        }
+      } else {
+        setState(() => _isLoading = false);
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _isLoading = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error loading chats: $e')),
+        );
+      }
+    }
+  }
+
+  Future<void> _deleteChat(String chatId) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Delete Chat'),
+        content: const Text('Are you sure you want to delete this chat?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            child: const Text('Delete'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true) {
+      try {
+        await ref.read(databaseRepositoryProvider).deleteChat(chatId);
+        _loadChats();
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error deleting chat: $e')),
+          );
+        }
+      }
+    }
+  }
+
+  List<Map<String, dynamic>> get _filteredChats {
+    if (_searchQuery.isEmpty) return _chats;
+    return _chats.where((chat) {
+      final title = (chat['title'] ?? '').toString().toLowerCase();
+      return title.contains(_searchQuery.toLowerCase());
+    }).toList();
+  }
+
+  String _formatTime(String? timestamp) {
+    if (timestamp == null) return '';
+    try {
+      final date = DateTime.parse(timestamp);
+      final now = DateTime.now();
+      final diff = now.difference(date);
+      
+      if (diff.inDays == 0) {
+        return '${date.hour}:${date.minute.toString().padLeft(2, '0')}';
+      } else if (diff.inDays == 1) {
+        return 'Yesterday';
+      } else if (diff.inDays < 7) {
+        const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        return days[date.weekday - 1];
+      } else {
+        return '${date.day}/${date.month}';
+      }
+    } catch (e) {
+      return '';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +143,6 @@ class ChatListScreen extends StatelessWidget {
                                 end: Alignment.bottomRight,
                               ),
                               shape: BoxShape.circle,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: AppTheme.primaryColor.withValues(alpha: 0.2),
-                                  blurRadius: 8,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
                             ),
                             child: const Center(
                               child: Text(
@@ -66,37 +166,18 @@ class ChatListScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Stack(
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.notifications_outlined, color: secondaryTextColor),
-                          ),
-                          Positioned(
-                            top: 8,
-                            right: 8,
-                            child: Container(
-                              width: 8,
-                              height: 8,
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: isDark ? AppTheme.backgroundDark : AppTheme.backgroundLight,
-                                  width: 2,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      IconButton(
+                        onPressed: _loadChats,
+                        icon: Icon(Icons.refresh, color: secondaryTextColor),
                       ),
                     ],
                   ),
                   const SizedBox(height: 16),
                   // Search Bar
                   TextField(
+                    onChanged: (value) => setState(() => _searchQuery = value),
                     decoration: InputDecoration(
-                      hintText: 'Search statutes, drafts, or queries...',
+                      hintText: 'Search chats...',
                       prefixIcon: Icon(Icons.search, color: secondaryTextColor),
                       filled: true,
                       fillColor: isDark ? surfaceColor : Colors.grey[100],
@@ -104,7 +185,6 @@ class ChatListScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide.none,
                       ),
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     ),
                   ),
                 ],
@@ -112,108 +192,33 @@ class ChatListScreen extends StatelessWidget {
             ),
 
             Expanded(
-              child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                children: [
-                  // Disclaimer Banner
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.amber.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.amber.withValues(alpha: 0.2)),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Icon(Icons.info_outline, color: Colors.amber, size: 20),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Text(
-                            'Legal Disclaimer: ArbiBot outputs are draft-only and citation-based. All content must be reviewed by a qualified legal professional.',
-                            style: TextStyle(
-                              color: isDark ? Colors.amber[200] : Colors.amber[800],
-                              fontSize: 12,
-                            ),
+              child: _isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : _filteredChats.isEmpty
+                      ? _buildEmptyState(textColor, secondaryTextColor)
+                      : RefreshIndicator(
+                          onRefresh: _loadChats,
+                          child: ListView.builder(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            itemCount: _filteredChats.length + 1,
+                            itemBuilder: (context, index) {
+                              if (index == 0) {
+                                return _buildDisclaimer(isDark);
+                              }
+                              final chat = _filteredChats[index - 1];
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 12),
+                                child: _ChatListItem(
+                                  title: chat['title'] ?? 'New Chat',
+                                  subtitle: 'Tap to continue conversation',
+                                  time: _formatTime(chat['updated_at']),
+                                  onTap: () => context.push('/chat/${chat['id']}'),
+                                  onDelete: () => _deleteChat(chat['id']),
+                                ),
+                              );
+                            },
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-
-                  // Pinned Section
-                  Text(
-                    'PINNED',
-                    style: TextStyle(
-                      color: secondaryTextColor,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.2,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  _ChatListItem(
-                    title: 'Ghana Constitution Review',
-                    subtitle: 'Article 45 details the process of electoral boundary demarcation...',
-                    time: '10:42 AM',
-                    tag: 'Research',
-                    tagColor: Colors.blue,
-                    icon: Icons.gavel,
-                    isPinned: true,
-                  ),
-
-                  const SizedBox(height: 24),
-
-                  // Recent Section
-                  Text(
-                    'RECENT',
-                    style: TextStyle(
-                      color: secondaryTextColor,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.2,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  _ChatListItem(
-                    title: 'NDA for Tech Startup',
-                    subtitle: 'Added the mutual confidentiality clause as requested. Please review section 3.',
-                    time: 'Yesterday',
-                    tag: 'Drafting',
-                    tagColor: Colors.purple,
-                    icon: Icons.edit_document,
-                  ),
-                  const SizedBox(height: 12),
-                  _ChatListItem(
-                    title: 'Legal Associate CV Update',
-                    subtitle: "Reformatted the 'Experience' section to highlight arbitration cases.",
-                    time: 'Mon',
-                    tag: 'CV Builder',
-                    tagColor: Colors.green,
-                    icon: Icons.badge,
-                  ),
-                  const SizedBox(height: 12),
-                  _ChatListItem(
-                    title: 'Land Title Registration',
-                    subtitle: 'According to the Land Act, 2020 (Act 1036), the process involves...',
-                    time: 'Last Week',
-                    tag: 'Research',
-                    tagColor: Colors.blue,
-                    icon: Icons.gavel,
-                  ),
-                  const SizedBox(height: 12),
-                  _ChatListItem(
-                    title: 'Intellectual Property Rights',
-                    subtitle: 'Summarizing key precedents regarding software copyright in Ghana.',
-                    time: '2 Weeks ago',
-                    tag: 'Discovery',
-                    tagColor: Colors.orange,
-                    icon: Icons.lightbulb,
-                  ),
-                  const SizedBox(height: 80), // Bottom padding for FAB
-                ],
-              ),
             ),
           ],
         ),
@@ -225,128 +230,161 @@ class ChatListScreen extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildEmptyState(Color textColor, Color secondaryTextColor) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.chat_bubble_outline, size: 64, color: secondaryTextColor),
+          const SizedBox(height: 16),
+          Text(
+            'No conversations yet',
+            style: TextStyle(color: textColor, fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Start a new chat with ArbiBot',
+            style: TextStyle(color: secondaryTextColor),
+          ),
+          const SizedBox(height: 24),
+          ElevatedButton.icon(
+            onPressed: () => context.push('/chat/new'),
+            icon: const Icon(Icons.add),
+            label: const Text('New Chat'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppTheme.primaryColor,
+              foregroundColor: Colors.white,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDisclaimer(bool isDark) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.amber.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.amber.withValues(alpha: 0.2)),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Icon(Icons.info_outline, color: Colors.amber, size: 20),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Text(
+              'ArbiBot outputs are draft-only and must be reviewed by a qualified legal professional.',
+              style: TextStyle(
+                color: isDark ? Colors.amber[200] : Colors.amber[800],
+                fontSize: 12,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class _ChatListItem extends StatelessWidget {
   final String title;
   final String subtitle;
   final String time;
-  final String tag;
-  final Color tagColor;
-  final IconData icon;
-  final bool isPinned;
+  final VoidCallback onTap;
+  final VoidCallback onDelete;
 
   const _ChatListItem({
     required this.title,
     required this.subtitle,
     required this.time,
-    required this.tag,
-    required this.tagColor,
-    required this.icon,
-    this.isPinned = false,
+    required this.onTap,
+    required this.onDelete,
   });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final surfaceColor = isDark ? const Color(0xFF1C252E) : Colors.white;
     final textColor = isDark ? Colors.white : const Color(0xFF111418);
     final secondaryTextColor = isDark ? const Color(0xFF9DABB9) : const Color(0xFF637588);
+    final surfaceColor = isDark ? const Color(0xFF1C252E) : Colors.white;
 
-    return GestureDetector(
-      onTap: () => context.push('/chat/1'), // Placeholder ID
-      child: Container(
-        padding: const EdgeInsets.all(16),
+    return Dismissible(
+      key: Key(title),
+      direction: DismissDirection.endToStart,
+      onDismissed: (_) => onDelete(),
+      background: Container(
+        alignment: Alignment.centerRight,
+        padding: const EdgeInsets.only(right: 20),
         decoration: BoxDecoration(
-          color: surfaceColor,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: isDark ? Colors.transparent : Colors.grey[200]!,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.05),
-              blurRadius: 4,
-              offset: const Offset(0, 2),
-            ),
-          ],
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(12),
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: tagColor.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Icon(icon, color: tagColor, size: 24),
+        child: const Icon(Icons.delete, color: Colors.white),
+      ),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: surfaceColor,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: isDark ? const Color(0xFF283039) : const Color(0xFFE5E7EB),
             ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(
+                  color: AppTheme.primaryColor.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(Icons.chat, color: AppTheme.primaryColor),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        color: textColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      subtitle,
+                      style: TextStyle(color: secondaryTextColor, fontSize: 12),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          title,
-                          style: TextStyle(
-                            color: textColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      Text(
-                        time,
-                        style: TextStyle(
-                          color: secondaryTextColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    time,
+                    style: TextStyle(color: secondaryTextColor, fontSize: 12),
                   ),
                   const SizedBox(height: 4),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                    decoration: BoxDecoration(
-                      color: tagColor.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: Text(
-                      tag.toUpperCase(),
-                      style: TextStyle(
-                        color: tagColor,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    subtitle,
-                    style: TextStyle(
-                      color: secondaryTextColor,
-                      fontSize: 14,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                  Icon(Icons.chevron_right, color: secondaryTextColor, size: 20),
                 ],
               ),
-            ),
-            if (isPinned)
-              Padding(
-                padding: const EdgeInsets.only(left: 8),
-                child: Icon(Icons.push_pin, color: secondaryTextColor, size: 16),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );

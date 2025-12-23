@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArbiBot Profile</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1A2634", // Slightly lighter than background-dark for cards
+              "border-light": "#e2e8f0",
+              "border-dark": "#2d3b4e",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar hiding for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex items-center bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm p-4 pb-2 justify-between border-b border-transparent dark:border-white/5">
+<div class="w-10"></div> <!-- Spacer for centering -->
+<h2 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center">Profile</h2>
+<div class="w-10 flex justify-end">
+<!-- Optional Edit Icon -->
+<button class="flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex flex-col gap-6 p-4">
+<!-- Profile Header -->
+<section class="flex flex-col items-center gap-4 mt-2">
+<div class="relative group cursor-pointer">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-32 w-32 shadow-lg ring-4 ring-primary/20 dark:ring-primary/30 transition-all group-hover:ring-primary" data-alt="Professional portrait of a Ghanaian legal associate named Kwame" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuATDupFqazycDScvAnyXx7ajTAzTKIp3thKkUgZk7KSdINc7X83Z4fHmXy9aLJrWBf8KwfmGHyit2Tx28Z9TA7imambd7VCvNefn5NHBVP2tDaBrC9p5OclZloBSk2tmSkHBPSsjM2aY5eKnO3fgANblatdJU9K-0HKYwbGIbLqNWhCWFQR57iwKbttHMDzKze0LwpOh7Dl81j4P7qe6Qyl2s0BBVyT_xcrOa5rlGAj1l6kff12fompmyHrlEtVNml6ICBJQUnKzIw");'>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary text-white rounded-full p-1.5 shadow-md flex items-center justify-center border-2 border-background-light dark:border-background-dark">
+<span class="material-symbols-outlined text-[16px]">camera_alt</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center gap-1">
+<h1 class="text-2xl font-bold leading-tight tracking-tight text-center">Kwame Mensah</h1>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wide border border-primary/20">Legal Associate</span>
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Professional User</span>
+</div>
+</div>
+</section>
+<!-- Subscription Action Panel -->
+<section class="rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark p-5 shadow-sm">
+<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">verified</span>
+<p class="text-base font-bold leading-tight">ArbiBot Pro</p>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">Active • Renews Nov 24, 2024</p>
+</div>
+<button class="flex w-full sm:w-auto items-center justify-center rounded-lg h-9 px-5 bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-medium shadow-md shadow-primary/20">
+                        Manage Subscription
+                    </button>
+</div>
+</section>
+<!-- Stats Row -->
+<section class="grid grid-cols-3 gap-3">
+<div class="flex flex-col gap-2 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark p-3 py-4 items-center text-center shadow-sm">
+<div class="bg-primary/10 text-primary p-2 rounded-full mb-1">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+<div>
+<p class="text-xl font-bold leading-none mb-1">24</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium leading-tight">Drafts</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark p-3 py-4 items-center text-center shadow-sm">
+<div class="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 p-2 rounded-full mb-1">
+<span class="material-symbols-outlined text-[20px]">bookmarks</span>
+</div>
+<div>
+<p class="text-xl font-bold leading-none mb-1">148</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium leading-tight">Citations</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark p-3 py-4 items-center text-center shadow-sm">
+<div class="bg-purple-500/10 text-purple-600 dark:text-purple-400 p-2 rounded-full mb-1">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<div>
+<p class="text-xl font-bold leading-none mb-1">12</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium leading-tight">CVs</p>
+</div>
+</div>
+</section>
+<!-- Settings List -->
+<section class="flex flex-col overflow-hidden rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark shadow-sm">
+<!-- Item 1 -->
+<a class="group flex items-center gap-4 px-4 py-4 justify-between hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors border-b border-border-light dark:border-border-dark last:border-0" href="#">
+<div class="flex items-center gap-4">
+<div class="text-slate-600 dark:text-slate-300 flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark/80 shrink-0 size-10 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">history_edu</span>
+</div>
+<p class="text-base font-medium leading-normal flex-1 truncate">My Drafts &amp; History</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</a>
+<!-- Item 2 -->
+<a class="group flex items-center gap-4 px-4 py-4 justify-between hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors border-b border-border-light dark:border-border-dark last:border-0" href="#">
+<div class="flex items-center gap-4">
+<div class="text-slate-600 dark:text-slate-300 flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark/80 shrink-0 size-10 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">library_books</span>
+</div>
+<p class="text-base font-medium leading-normal flex-1 truncate">Saved Citations</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</a>
+<!-- Item 3 -->
+<a class="group flex items-center gap-4 px-4 py-4 justify-between hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors border-b border-border-light dark:border-border-dark last:border-0" href="#">
+<div class="flex items-center gap-4">
+<div class="text-slate-600 dark:text-slate-300 flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark/80 shrink-0 size-10 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<p class="text-base font-medium leading-normal flex-1 truncate">Profile Settings</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</a>
+<!-- Item 4 -->
+<a class="group flex items-center gap-4 px-4 py-4 justify-between hover:bg-background-light dark:hover:bg-background-dark/50 transition-colors" href="#">
+<div class="flex items-center gap-4">
+<div class="text-slate-600 dark:text-slate-300 flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark/80 shrink-0 size-10 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help</span>
+</div>
+<p class="text-base font-medium leading-normal flex-1 truncate">Help &amp; Support</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</a>
+</section>
+<!-- Logout Button -->
+<button class="w-full flex items-center justify-center gap-2 py-3 rounded-lg text-red-500 hover:bg-red-500/10 transition-colors font-bold text-sm">
+<span class="material-symbols-outlined">logout</span>
+                Sign Out
+            </button>
+<!-- Disclaimer Footer -->
+<div class="pb-6">
+<p class="text-xs text-center text-slate-500 dark:text-slate-600 leading-relaxed px-4">
+<span class="font-bold block mb-1">Disclaimer</span>
+                    ArbiBot generates drafts based on Ghanaian legal frameworks. All outputs are draft-only and require professional human review. Not a substitute for legal counsel.
+                </p>
+<div class="h-10"></div> <!-- Bottom spacer for navigation bar -->
+</div>
+</main>
+<!-- Bottom Navigation (Implied Visual) -->
+<div class="sticky bottom-0 z-20 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-t border-border-light dark:border-border-dark">
+<div class="flex justify-around items-center p-3">
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">gavel</span>
+<span class="text-[10px] font-medium">Research</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit_document</span>
+<span class="text-[10px] font-medium">Drafting</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined fill-current">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArbiBot Splash Screen</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white overflow-hidden antialiased">
+<div class="relative flex h-screen w-full flex-col justify-between overflow-hidden bg-[#111418] dark:bg-[#101922]">
+<!-- Ambient Background Glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] bg-primary/10 blur-[90px] rounded-full pointer-events-none z-0"></div>
+<!-- Top Spacer (Safe Area) -->
+<div class="flex-none h-16"></div>
+<!-- Main Content: Logo & Branding -->
+<div class="relative z-10 flex flex-col items-center justify-center flex-grow w-full px-6">
+<!-- Logo Container -->
+<!-- Adapted from Card component style but shaped for a Logo -->
+<div class="mb-8 p-1 rounded-2xl bg-gradient-to-b from-primary/20 to-transparent">
+<div class="flex items-center justify-center w-28 h-28 rounded-xl bg-[#1a222c] border border-primary/10 shadow-2xl shadow-primary/20 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/5"></div>
+<!-- Using an icon as the visual centerpiece -->
+<span class="material-symbols-outlined text-primary text-6xl relative z-10">balance</span>
+</div>
+</div>
+<!-- Brand Text -->
+<div class="flex flex-col items-center gap-3 text-center">
+<h1 class="text-white text-4xl font-extrabold tracking-tight">ArbiBot</h1>
+<!-- Tagline adapted from Card subtitle style -->
+<p class="text-[#9dabb9] text-lg font-medium leading-relaxed tracking-wide max-w-[300px]">
+                    Ghanaian Legal Intelligence,<br/>Drafted Safely
+                </p>
+</div>
+</div>
+<!-- Bottom Actions: Loader & Footer -->
+<div class="relative z-10 flex flex-col items-center w-full px-8 pb-12 gap-6">
+<!-- Progress Bar -->
+<!-- Adapted from ProgressBar component -->
+<div class="w-full max-w-[180px] flex flex-col gap-3">
+<div class="flex justify-center">
+<p class="text-primary/80 text-xs font-semibold uppercase tracking-widest">Initializing AI</p>
+</div>
+<div class="h-1.5 w-full bg-[#3b4754] rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 60%;"></div>
+</div>
+</div>
+<!-- Meta/Footer Text -->
+<!-- Adapted from MetaText component -->
+<p class="text-[#9dabb9] text-xs font-normal opacity-50">v1.0 © 2024 ArbiBot</p>
+</div>
+</div>
+</body></html>

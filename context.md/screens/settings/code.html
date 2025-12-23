@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArbiBot Settings</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1c252e",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden pb-12">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-gray-200 dark:border-gray-800/50 backdrop-blur-md bg-opacity-90 dark:bg-opacity-90">
+<div class="text-[#111418] dark:text-white flex size-12 shrink-0 items-center justify-center cursor-pointer rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Settings</h2>
+</div>
+<!-- Scrollable Content -->
+<div class="flex flex-col gap-6 px-4 pt-4">
+<!-- Profile Header -->
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-light dark:bg-surface-dark shadow-sm">
+<div class="relative h-16 w-16 shrink-0 rounded-full bg-center bg-cover bg-no-repeat" data-alt="Professional headshot of a lawyer in a suit" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAni0iT2dCAZL8HNGXs3IlF5608Apu3kHkkR7ieWhPeb13nYn2snDlwdXdjIFionz9-dF4h-VGgJYT_Zm8_2jj-oj7drYzOG8McvWQibmIsEQhIMpbRjYI8eI5uLE1prE0LKF8wqGS47IvI1HgSrMWlvbPvgTvRqfVYx4VXvMhhoMZ2kYLtJ4D01QQqFk1AM8X8XxXzQAdhLzBduFUIH19EwXPtPS2Nk53Tw9G8j8V9dQBT3kR6w4HFYamUGAJZpf1tdhbXnAKGI_k");'>
+<div class="absolute bottom-0 right-0 h-4 w-4 rounded-full border-2 border-surface-light dark:border-surface-dark bg-green-500"></div>
+</div>
+<div class="flex flex-col justify-center flex-1">
+<p class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Kwame Mensah</p>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal">Professional Plan</p>
+</div>
+<button class="text-primary text-sm font-bold px-3 py-1.5 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors">
+                    Manage
+                </button>
+</div>
+<!-- Group 1: Account & Security -->
+<div>
+<h3 class="text-[#637588] dark:text-[#9dabb9] text-xs font-bold uppercase tracking-wider px-4 mb-2">Account &amp; Security</h3>
+<div class="flex flex-col overflow-hidden rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm divide-y divide-gray-100 dark:divide-gray-800">
+<!-- Change Password -->
+<div class="flex items-center gap-4 p-4 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition-colors group">
+<div class="flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-9 text-primary">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<p class="text-[#111418] dark:text-white text-base font-medium flex-1">Change Password</p>
+<span class="material-symbols-outlined text-[#9dabb9] text-[20px]">chevron_right</span>
+</div>
+<!-- Biometric Login -->
+<div class="flex items-center gap-4 p-4">
+<div class="flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-9 text-primary">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+</div>
+<p class="text-[#111418] dark:text-white text-base font-medium flex-1">Biometric Login</p>
+<label class="relative flex h-[30px] w-[50px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-[#323e4a] p-1 transition-colors has-[:checked]:bg-primary">
+<input checked="" class="peer invisible absolute" type="checkbox"/>
+<div class="h-5 w-5 rounded-full bg-white shadow-md transition-all peer-checked:translate-x-5"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Group 2: Privacy & Data -->
+<div>
+<h3 class="text-[#637588] dark:text-[#9dabb9] text-xs font-bold uppercase tracking-wider px-4 mb-2">Privacy &amp; Data</h3>
+<div class="flex flex-col overflow-hidden rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm divide-y divide-gray-100 dark:divide-gray-800">
+<!-- Privacy Controls -->
+<div class="flex items-center gap-4 p-4 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition-colors">
+<div class="flex items-center justify-center rounded-lg bg-blue-500/10 shrink-0 size-9 text-blue-500">
+<span class="material-symbols-outlined text-[20px]">security</span>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-[#111418] dark:text-white text-base font-medium">Privacy Controls</p>
+<p class="text-[#637588] dark:text-[#9dabb9] text-xs">Manage data sharing &amp; analytics</p>
+</div>
+<span class="material-symbols-outlined text-[#9dabb9] text-[20px]">chevron_right</span>
+</div>
+<!-- Delete Data (Destructive) -->
+<div class="flex items-center gap-4 p-4 hover:bg-red-50/50 dark:hover:bg-red-900/10 cursor-pointer transition-colors">
+<div class="flex items-center justify-center rounded-lg bg-red-500/10 shrink-0 size-9 text-red-500">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</div>
+<p class="text-red-600 dark:text-red-400 text-base font-medium flex-1">Request Data Deletion</p>
+<span class="material-symbols-outlined text-red-300 dark:text-red-800/50 text-[20px]">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Group 3: Legal & Compliance -->
+<div>
+<h3 class="text-[#637588] dark:text-[#9dabb9] text-xs font-bold uppercase tracking-wider px-4 mb-2">Legal &amp; Compliance</h3>
+<div class="flex flex-col overflow-hidden rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm divide-y divide-gray-100 dark:divide-gray-800">
+<!-- Terms -->
+<div class="flex items-center gap-4 p-4 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition-colors">
+<div class="flex items-center justify-center rounded-lg bg-orange-500/10 shrink-0 size-9 text-orange-500">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+</div>
+<p class="text-[#111418] dark:text-white text-base font-medium flex-1">Terms of Service</p>
+<span class="material-symbols-outlined text-[#9dabb9] text-[20px]">open_in_new</span>
+</div>
+<!-- Disclaimer -->
+<div class="flex items-center gap-4 p-4 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition-colors">
+<div class="flex items-center justify-center rounded-lg bg-yellow-500/10 shrink-0 size-9 text-yellow-500">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-[#111418] dark:text-white text-base font-medium">Disclaimer</p>
+<p class="text-[#637588] dark:text-[#9dabb9] text-xs">AI outputs are draft-only &amp; require review</p>
+</div>
+<span class="material-symbols-outlined text-[#9dabb9] text-[20px]">chevron_right</span>
+</div>
+<!-- AI Ethics -->
+<div class="flex items-center gap-4 p-4 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition-colors">
+<div class="flex items-center justify-center rounded-lg bg-purple-500/10 shrink-0 size-9 text-purple-500">
+<span class="material-symbols-outlined text-[20px]">balance</span>
+</div>
+<p class="text-[#111418] dark:text-white text-base font-medium flex-1">AI Ethics Policy</p>
+<span class="material-symbols-outlined text-[#9dabb9] text-[20px]">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Group 4: Support -->
+<div>
+<h3 class="text-[#637588] dark:text-[#9dabb9] text-xs font-bold uppercase tracking-wider px-4 mb-2">Support</h3>
+<div class="flex flex-col overflow-hidden rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm divide-y divide-gray-100 dark:divide-gray-800">
+<div class="flex items-center gap-4 p-4 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition-colors">
+<div class="flex items-center justify-center rounded-lg bg-green-500/10 shrink-0 size-9 text-green-500">
+<span class="material-symbols-outlined text-[20px]">help</span>
+</div>
+<p class="text-[#111418] dark:text-white text-base font-medium flex-1">Help Center</p>
+<span class="material-symbols-outlined text-[#9dabb9] text-[20px]">open_in_new</span>
+</div>
+<div class="flex items-center gap-4 p-4 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer transition-colors">
+<div class="flex items-center justify-center rounded-lg bg-teal-500/10 shrink-0 size-9 text-teal-500">
+<span class="material-symbols-outlined text-[20px]">bug_report</span>
+</div>
+<p class="text-[#111418] dark:text-white text-base font-medium flex-1">Report a Bug</p>
+<span class="material-symbols-outlined text-[#9dabb9] text-[20px]">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Logout Button -->
+<div class="mt-2">
+<button class="flex w-full items-center justify-center gap-2 rounded-xl bg-surface-light dark:bg-surface-dark p-4 text-base font-bold text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors shadow-sm">
+<span class="material-symbols-outlined">logout</span>
+                    Log Out
+                </button>
+</div>
+<!-- Version Info -->
+<div class="flex justify-center pb-8 pt-2">
+<p class="text-xs font-medium text-[#637588] dark:text-[#9dabb9]">ArbiBot v1.0.2</p>
+</div>
+</div>
+</div>
+</body></html>

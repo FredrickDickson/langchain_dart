@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Draft Type Selection - ArbiBot</title>
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c242e",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar hiding for horizontal scroll */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl">
+<!-- Header -->
+<div class="flex items-center p-4 pb-2 justify-between sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md">
+<button class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center justify-start hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Draft Type</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex size-12 cursor-pointer items-center justify-end rounded-full text-slate-900 dark:text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+</button>
+</div>
+</div>
+<!-- Headline -->
+<div class="px-4 pt-4 pb-2">
+<h1 class="text-[28px] font-bold leading-tight tracking-tight">What are we<br/>drafting today?</h1>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-3">
+<label class="flex flex-col h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
+<div class="text-slate-500 dark:text-slate-400 flex border-none bg-surface-light dark:bg-surface-dark items-center justify-center pl-4 rounded-l-xl">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-surface-light dark:bg-surface-dark placeholder:text-slate-500 dark:placeholder:text-slate-400 px-4 rounded-l-none pl-2 text-base font-normal leading-normal transition-all" placeholder="Search legal documents..." value=""/>
+</div>
+</label>
+</div>
+<!-- Recently Used Section -->
+<div class="pt-6 pb-2">
+<div class="flex items-center justify-between px-4 pb-3">
+<h3 class="text-lg font-bold leading-tight tracking-[-0.015em]">Recently Used</h3>
+<button class="text-primary text-sm font-semibold">View all</button>
+</div>
+<div class="flex overflow-x-auto no-scrollbar gap-4 px-4 pb-4">
+<!-- Recent Card 1 -->
+<div class="min-w-[260px] flex flex-col gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">2h ago</span>
+</div>
+<div>
+<p class="text-base font-bold leading-tight">Statement of Case</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal mt-1 truncate">Project: Kwame v. State Construction</p>
+</div>
+<div class="w-full h-1 bg-slate-200 dark:bg-slate-700 rounded-full mt-1 overflow-hidden">
+<div class="h-full bg-primary w-3/4 rounded-full"></div>
+</div>
+</div>
+<!-- Recent Card 2 -->
+<div class="min-w-[260px] flex flex-col gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-purple-500/10 text-purple-500">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">Yesterday</span>
+</div>
+<div>
+<p class="text-base font-bold leading-tight">Legal Opinion</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal mt-1 truncate">Subject: Land Title Verification</p>
+</div>
+<div class="w-full h-1 bg-slate-200 dark:bg-slate-700 rounded-full mt-1 overflow-hidden">
+<div class="h-full bg-purple-500 w-1/2 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Categories / Templates Grid -->
+<div class="px-4 pt-2 pb-24">
+<h3 class="text-lg font-bold leading-tight tracking-[-0.015em] pb-4">Start New Draft</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Card: Submission -->
+<button class="flex flex-col items-start gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm border border-slate-200 dark:border-slate-800 hover:border-primary transition-colors text-left group">
+<div class="w-full aspect-[16/9] rounded-lg bg-cover bg-center overflow-hidden relative" data-alt="Abstract gradient mesh representing legal submission documents" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBCOsAraB39JaSbPULFDN4Xa3eSFYWkgW4vTEYOUkXhnNWMPCV5XylBaIUXxP8VHpGYiWPO2EVsGIdZr0q9vBnagey4TsZFApuP2wQ8l1KG36zcqNGG9daFO2lmqnJssVi3Qtw36P-aLesqmrZk_F28aW9MBPeVEFPeKV5T8FBEOmbGtSMDpDGdYl33ER2IpdiPXNoOvXbDs23p0qMdF2p5KXLn9typmlInMlygoStnEB3nzClplVPNuJqOiBe9K2OpQ_URbM-GJMc');">
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+<div class="absolute bottom-2 left-2 bg-white/10 backdrop-blur-md p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</div>
+</div>
+<div>
+<p class="text-base font-bold leading-tight group-hover:text-primary transition-colors">Submission</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Formal court submissions</p>
+</div>
+</button>
+<!-- Card: Legal Opinion -->
+<button class="flex flex-col items-start gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm border border-slate-200 dark:border-slate-800 hover:border-primary transition-colors text-left group">
+<div class="w-full aspect-[16/9] rounded-lg bg-cover bg-center overflow-hidden relative" data-alt="Close up of a fountain pen on legal paper" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVMleQ0fNx71JS1n-1oRk9ZZETHbsBdUWDYWArDEzwXfKk_EE8L8oUVXr4q43l5nATqA8MHKytG3z_jFkwGy_KEVd1umFEbTQP3-SOkJ_1CfTu90xh0_INgCJl-yw2-A_pA2Rj7c3XC3dlvXlChZNEVhmaX_nq41wih9WeVmN9Xs95y3sTIRFN3uLO1GLxW0fhnTD396vQ4_4uKYNXCMtR4hauzlY2AY1FbPfjUhUTa-_XbMGup5bpast57j6BBhs56CRx4_0iKBo');">
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+<div class="absolute bottom-2 left-2 bg-white/10 backdrop-blur-md p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+</div>
+</div>
+<div>
+<p class="text-base font-bold leading-tight group-hover:text-primary transition-colors">Legal Opinion</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Advisory memorandums</p>
+</div>
+</button>
+<!-- Card: Statement of Case -->
+<button class="flex flex-col items-start gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm border border-slate-200 dark:border-slate-800 hover:border-primary transition-colors text-left group">
+<div class="w-full aspect-[16/9] rounded-lg bg-cover bg-center overflow-hidden relative" data-alt="Gavel on a wooden sound block" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCTVCnoDJlOEMxJbY0ReB81_R8ga9MdfudNQ3T0BZLI5QHRxvQYkWjChVqcU9GYL_ATwMFezDDpSutSz5njvvySoupAaAPf46mk6fkSzr_N7dr_LkWRlNZ5c7zA49ss2twATuzZL_H8Ejbd9IKqMNM7_1f5wCv-laxOLVHFnlCGpYgzUf-r5fydfGvxrXeKpkX69Oayjl1dT6vq2juleIMS4srtSRvOSTJ-ALJjDMqqe2eR17jLj4BJfz8ZeR8AdoqyU82QYU8gMJU');">
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+<div class="absolute bottom-2 left-2 bg-white/10 backdrop-blur-md p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+</div>
+</div>
+<div>
+<p class="text-base font-bold leading-tight group-hover:text-primary transition-colors">Statement of Case</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Draft formal arguments</p>
+</div>
+</button>
+<!-- Card: CV Builder -->
+<button class="flex flex-col items-start gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 shadow-sm border border-slate-200 dark:border-slate-800 hover:border-primary transition-colors text-left group">
+<div class="w-full aspect-[16/9] rounded-lg bg-cover bg-center overflow-hidden relative" data-alt="Minimalist office desk setup with laptop" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDyRbi0BCAEubIsp07l55rOUdb3smhJal3hFZDtvecK3iB6-vF0HALQE23IpldZLBW5DwKOcp6mv7LqhsjaFG2h6qjOdCcF2ze8YRSM0x_ttNMruwG4IaJc6w_GGqrPOkQJgut8YbKPK-OW1Ej2l2bA_uHzUcW0tApil9uFT1a94D2Q7nj8RajTZ-gI5E2VsOMzEsCmST5g4B3pfWrXdeB-Zhwmgm7UenBwu2jmI2QOEtDy6TPkqzZ-7Z0RqvoU-AtcLMXV_52CDwY');">
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all"></div>
+<div class="absolute bottom-2 left-2 bg-white/10 backdrop-blur-md p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+</div>
+<div>
+<p class="text-base font-bold leading-tight group-hover:text-primary transition-colors">CV Builder</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Professional resumes</p>
+</div>
+</button>
+</div>
+<!-- Disclaimer -->
+<div class="mt-8 flex gap-3 p-3 rounded-lg bg-blue-900/20 border border-blue-900/30 items-start">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">info</span>
+<p class="text-xs text-slate-400 dark:text-slate-400 leading-relaxed">
+<span class="text-primary font-bold">Draft-only Service:</span> ArbiBot generates drafts based on Ghanaian law. All outputs must be reviewed by a qualified legal professional before use.
+                 </p>
+</div>
+</div>
+<!-- Floating Action Button -->
+<div class="fixed bottom-6 right-6 md:absolute">
+<button class="flex items-center gap-2 bg-primary hover:bg-blue-600 text-white px-5 py-4 rounded-full shadow-lg shadow-primary/30 transition-all hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-bold text-sm">Ask AI Assistant</span>
+</button>
+</div>
+</div>
+</body></html>

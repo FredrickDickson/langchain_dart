@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArbiBot Documents Library</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c2630",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased overflow-x-hidden selection:bg-primary selection:text-white">
+<div class="relative flex min-h-screen flex-col w-full pb-[88px]"> <!-- Padding bottom for Nav + FAB -->
+<!-- Header -->
+<header class="sticky top-0 z-30 flex items-center justify-between px-4 py-3 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<h1 class="text-2xl font-bold leading-tight tracking-tight">Library</h1>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-200 dark:hover:bg-surface-dark transition-colors text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">search</span>
+</button>
+</header>
+<!-- Disclaimer -->
+<div class="px-4 pt-4 pb-2">
+<div class="flex items-start gap-2 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
+<span class="material-symbols-outlined text-yellow-500 text-[18px] mt-0.5">info</span>
+<p class="text-xs text-yellow-600 dark:text-yellow-500 font-medium leading-tight">
+                    Disclaimer: All AI outputs are drafts and require human verification before use.
+                </p>
+</div>
+</div>
+<!-- Segmented Control (Tabs) -->
+<div class="px-4 py-2">
+<div class="flex p-1 bg-gray-200 dark:bg-surface-dark rounded-xl relative">
+<!-- Active Tab Background (Visual Only - handled by logic in real app, hardcoded here) -->
+<div class="w-1/2 absolute left-1 top-1 bottom-1 bg-white dark:bg-primary rounded-lg shadow-sm z-0"></div>
+<button class="relative z-10 flex-1 py-2 text-sm font-bold text-center text-slate-900 dark:text-white">
+                    Drafts
+                </button>
+<button class="relative z-10 flex-1 py-2 text-sm font-medium text-center text-slate-500 dark:text-slate-400">
+                    Finalized
+                </button>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="w-full overflow-x-auto no-scrollbar py-2 pl-4">
+<div class="flex gap-2 pr-4 min-w-max">
+<button class="flex items-center justify-center h-8 px-4 rounded-full bg-primary text-white text-sm font-medium">
+                    All
+                </button>
+<button class="flex items-center justify-center h-8 px-4 rounded-full bg-gray-200 dark:bg-surface-dark text-slate-600 dark:text-slate-300 text-sm font-medium border border-transparent dark:border-gray-700">
+                    Legal Briefs
+                </button>
+<button class="flex items-center justify-center h-8 px-4 rounded-full bg-gray-200 dark:bg-surface-dark text-slate-600 dark:text-slate-300 text-sm font-medium border border-transparent dark:border-gray-700">
+                    Contracts
+                </button>
+<button class="flex items-center justify-center h-8 px-4 rounded-full bg-gray-200 dark:bg-surface-dark text-slate-600 dark:text-slate-300 text-sm font-medium border border-transparent dark:border-gray-700">
+                    CVs
+                </button>
+<button class="flex items-center justify-center h-8 px-4 rounded-full bg-gray-200 dark:bg-surface-dark text-slate-600 dark:text-slate-300 text-sm font-medium border border-transparent dark:border-gray-700">
+                    Case Law
+                </button>
+</div>
+</div>
+<!-- Document List -->
+<div class="flex flex-col px-4 mt-2 space-y-3">
+<!-- Item 1 -->
+<div class="group flex items-center justify-between p-3 bg-white dark:bg-surface-dark rounded-xl shadow-sm dark:shadow-none border border-gray-100 dark:border-gray-800 active:scale-[0.99] transition-transform duration-100">
+<div class="flex items-center gap-4 overflow-hidden">
+<div class="shrink-0 flex items-center justify-center w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-500/10 text-primary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="text-base font-bold text-slate-900 dark:text-white truncate pr-2">Non-Disclosure Agreement - Tech Corp</h3>
+<div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">smart_toy</span>
+                                DraftBot
+                            </span>
+<span>•</span>
+<span>2 mins ago</span>
+</div>
+</div>
+</div>
+<div class="shrink-0 pl-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group flex items-center justify-between p-3 bg-white dark:bg-surface-dark rounded-xl shadow-sm dark:shadow-none border border-gray-100 dark:border-gray-800 active:scale-[0.99] transition-transform duration-100">
+<div class="flex items-center gap-4 overflow-hidden">
+<div class="shrink-0 flex items-center justify-center w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="text-base font-bold text-slate-900 dark:text-white truncate pr-2">Defense Brief: State v. Jones</h3>
+<div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+                                ResearchBot
+                            </span>
+<span>•</span>
+<span>1 hour ago</span>
+</div>
+</div>
+</div>
+<div class="shrink-0 pl-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group flex items-center justify-between p-3 bg-white dark:bg-surface-dark rounded-xl shadow-sm dark:shadow-none border border-gray-100 dark:border-gray-800 active:scale-[0.99] transition-transform duration-100">
+<div class="flex items-center gap-4 overflow-hidden">
+<div class="shrink-0 flex items-center justify-center w-12 h-12 rounded-lg bg-green-100 dark:bg-green-500/10 text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined">person_search</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="text-base font-bold text-slate-900 dark:text-white truncate pr-2">Senior Associate CV - John Doe</h3>
+<div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">work</span>
+                                CareerBot
+                            </span>
+<span>•</span>
+<span>Yesterday</span>
+</div>
+</div>
+</div>
+<div class="shrink-0 pl-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="group flex items-center justify-between p-3 bg-white dark:bg-surface-dark rounded-xl shadow-sm dark:shadow-none border border-gray-100 dark:border-gray-800 active:scale-[0.99] transition-transform duration-100">
+<div class="flex items-center gap-4 overflow-hidden">
+<div class="shrink-0 flex items-center justify-center w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">real_estate_agent</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="text-base font-bold text-slate-900 dark:text-white truncate pr-2">Commercial Lease - Accra Mall</h3>
+<div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">smart_toy</span>
+                                DraftBot
+                            </span>
+<span>•</span>
+<span>2 days ago</span>
+</div>
+</div>
+</div>
+<div class="shrink-0 pl-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="group flex items-center justify-between p-3 bg-white dark:bg-surface-dark rounded-xl shadow-sm dark:shadow-none border border-gray-100 dark:border-gray-800 active:scale-[0.99] transition-transform duration-100 opacity-60">
+<div class="flex items-center gap-4 overflow-hidden">
+<div class="shrink-0 flex items-center justify-center w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-300">
+<span class="material-symbols-outlined">folder_open</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="text-base font-bold text-slate-900 dark:text-white truncate pr-2">Untitled Research Project</h3>
+<div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">history_edu</span>
+                                ResearchBot
+                            </span>
+<span>•</span>
+<span>3 days ago</span>
+</div>
+</div>
+</div>
+<div class="shrink-0 pl-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<div class="fixed bottom-[96px] right-4 z-40">
+<button class="flex items-center justify-center w-14 h-14 rounded-full bg-primary text-white shadow-lg shadow-blue-500/30 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+</div>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full bg-white dark:bg-[#111418] border-t border-gray-200 dark:border-gray-800 z-50 pb-safe">
+<div class="flex justify-around items-center h-[72px] px-2">
+<button class="flex flex-col items-center justify-center w-full h-full space-y-1 text-slate-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full space-y-1 text-primary">
+<span class="material-symbols-outlined text-[24px] fill-current">folder</span>
+<span class="text-[10px] font-bold">Library</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full space-y-1 text-slate-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">chat_bubble</span>
+<span class="text-[10px] font-medium">Chat</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full space-y-1 text-slate-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">account_circle</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</nav>
+<!-- Safe Area Padding for iPhone X+ (Simulated style) -->
+<div class="h-6 w-full fixed bottom-0 left-0 bg-transparent z-50 pointer-events-none"></div>
+</body></html>

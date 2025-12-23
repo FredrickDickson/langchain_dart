@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArbiBot - Registration</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1a232c", // Slightly lighter than background-dark
+              "border-light": "#e5e7eb",
+              "border-dark": "#2a3441",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem", 
+              "lg": "0.5rem", 
+              "xl": "0.75rem", 
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center px-4 py-4 justify-between sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md">
+<button class="text-[#111418] dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">ArbiBot</h2>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 flex flex-col items-center w-full max-w-md mx-auto px-5 pb-8">
+<!-- Logo / Branding Area -->
+<div class="mt-4 mb-6 flex flex-col items-center">
+<div class="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-[#0f4e8c] flex items-center justify-center shadow-lg shadow-primary/20 mb-4">
+<span class="material-symbols-outlined text-white text-4xl">gavel</span>
+</div>
+<h1 class="text-[#111418] dark:text-white tracking-tight text-[28px] font-bold leading-tight text-center">Join the Legal Revolution</h1>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-medium text-center mt-2 max-w-[280px]">
+                Secure access to Ghanaian legal research and AI drafting.
+            </p>
+</div>
+<!-- Segmented Control -->
+<div class="w-full mb-6">
+<div class="flex h-12 w-full items-center justify-center rounded-lg bg-[#e0e4e9] dark:bg-[#1c252e] p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md transition-all duration-200 text-[#637588] dark:text-[#9dabb9] hover:text-[#111418] dark:hover:text-white">
+<span class="truncate text-sm font-semibold">Sign In</span>
+<input class="invisible w-0" name="auth_mode" type="radio" value="Sign In"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md bg-white dark:bg-[#2c3642] shadow-sm text-[#111418] dark:text-white transition-all duration-200">
+<span class="truncate text-sm font-semibold">Register</span>
+<input checked="" class="invisible w-0" name="auth_mode" type="radio" value="Register"/>
+</label>
+</div>
+</div>
+<!-- Form Fields -->
+<div class="w-full space-y-4">
+<!-- Full Name -->
+<div class="flex flex-col gap-1.5">
+<label class="text-[#111418] dark:text-white text-sm font-medium leading-normal">Full Name</label>
+<div class="relative">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dce0e5] dark:border-[#3b4754] bg-white dark:bg-[#1c252e] h-12 placeholder:text-[#9dabb9] px-4 text-base font-normal leading-normal transition-shadow" placeholder="Enter your full name" type="text"/>
+</div>
+</div>
+<!-- Profession -->
+<div class="flex flex-col gap-1.5">
+<label class="text-[#111418] dark:text-white text-sm font-medium leading-normal">Profession</label>
+<div class="relative">
+<select class="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dce0e5] dark:border-[#3b4754] bg-white dark:bg-[#1c252e] h-12 px-4 text-base font-normal leading-normal appearance-none cursor-pointer">
+<option disabled="" selected="" value="">Select your role</option>
+<option value="lawyer">Lawyer</option>
+<option value="student">Law Student</option>
+<option value="paralegal">Paralegal</option>
+<option value="judge">Judge/Magistrate</option>
+<option value="hr">HR Professional</option>
+<option value="other">Other</option>
+</select>
+<!-- Custom Arrow Icon if needed, though form-select handles it -->
+</div>
+</div>
+<!-- Email -->
+<div class="flex flex-col gap-1.5">
+<label class="text-[#111418] dark:text-white text-sm font-medium leading-normal">Email Address</label>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dce0e5] dark:border-[#3b4754] bg-white dark:bg-[#1c252e] h-12 placeholder:text-[#9dabb9] px-4 text-base font-normal leading-normal transition-shadow" placeholder="you@example.com" type="email"/>
+</div>
+<!-- Password -->
+<div class="flex flex-col gap-1.5">
+<label class="text-[#111418] dark:text-white text-sm font-medium leading-normal">Password</label>
+<div class="relative flex items-center">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dce0e5] dark:border-[#3b4754] bg-white dark:bg-[#1c252e] h-12 placeholder:text-[#9dabb9] px-4 pr-12 text-base font-normal leading-normal transition-shadow" placeholder="Create a password" type="password"/>
+<button class="absolute right-0 h-full px-4 text-[#9dabb9] hover:text-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Disclaimer -->
+<div class="flex items-start gap-3 mt-6 w-full">
+<div class="flex items-center h-5">
+<input class="w-4 h-4 rounded border-[#dce0e5] dark:border-[#3b4754] text-primary focus:ring-primary bg-white dark:bg-[#1c252e]" id="disclaimer" type="checkbox"/>
+</div>
+<label class="text-xs text-[#637588] dark:text-[#9dabb9] leading-relaxed" for="disclaimer">
+                I agree that ArbiBot provides <span class="text-[#111418] dark:text-white font-semibold">draft-only outputs</span> requiring human review. I accept the <a class="text-primary hover:underline" href="#">Terms of Service</a>.
+            </label>
+</div>
+<!-- Primary Action -->
+<button class="mt-6 flex w-full items-center justify-center overflow-hidden rounded-lg bg-primary hover:bg-blue-600 text-white text-base font-bold leading-normal h-12 px-4 shadow-[0_1px_2px_rgba(0,0,0,0.1)] transition-colors duration-200">
+            Create Account
+        </button>
+<!-- Divider -->
+<div class="w-full my-6 flex items-center gap-3">
+<div class="h-px bg-[#dce0e5] dark:bg-[#2a3441] flex-1"></div>
+<span class="text-xs font-medium text-[#637588] dark:text-[#9dabb9]">OR</span>
+<div class="h-px bg-[#dce0e5] dark:bg-[#2a3441] flex-1"></div>
+</div>
+<!-- Social Login -->
+<div class="flex flex-col gap-3 w-full">
+<button class="flex w-full items-center justify-center gap-3 rounded-lg border border-[#dce0e5] dark:border-[#3b4754] bg-white dark:bg-[#1c252e] h-12 px-4 hover:bg-gray-50 dark:hover:bg-[#252f39] transition-colors">
+<img alt="Google" class="w-5 h-5" data-alt="Google G Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOijqNBeOH6Oz4Y0_PJ63og_t0QHBUvYs6SHHRk9BeGMyzyWBBo4epB6werxvus_BUveX6CDlZ0ksgYq_7m1F6laqrteeocLrPLIF1ADAtKzu9XpB3MPMWGlDBXh9Y8DxT5IoCtwMrtc9vmqdDcsp75atPp2lUxEf1z-jBkknSp6qNt6cRds2A0aIu2HhvdYSyYv_G6_T3US6PDVEgZTW87Z2IPSE-M8zQA03QMzzHZGt4BdEpIVmaW72CrNY9S_z5hW5-IU06FZ4"/>
+<span class="text-[#111418] dark:text-white text-sm font-semibold">Continue with Google</span>
+</button>
+<button class="flex w-full items-center justify-center gap-3 rounded-lg border border-[#dce0e5] dark:border-[#3b4754] bg-white dark:bg-[#1c252e] h-12 px-4 hover:bg-gray-50 dark:hover:bg-[#252f39] transition-colors">
+<span class="material-symbols-outlined text-[#111418] dark:text-white text-2xl">ios</span>
+<span class="text-[#111418] dark:text-white text-sm font-semibold">Continue with Apple</span>
+</button>
+</div>
+<!-- Footer Links -->
+<div class="mt-8 flex flex-col items-center gap-4">
+<div class="flex items-center gap-1 text-sm text-[#637588] dark:text-[#9dabb9]">
+<span class="material-symbols-outlined text-sm" style="font-size: 16px;">lock</span>
+<span>Encrypted &amp; Secure</span>
+</div>
+<a class="text-sm font-medium text-primary hover:text-blue-400" href="#">Need Help?</a>
+</div>
+</div>
+</div>
+</body></html>

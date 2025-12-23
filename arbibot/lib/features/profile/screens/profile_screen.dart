@@ -1,9 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:arbibot/core/theme/app_theme.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:arbibot/features/common/repositories/database_repository.dart';
+import 'package:arbibot/features/auth/repositories/auth_repository.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  ConsumerState<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends ConsumerState<ProfileScreen> {
+  Map<String, dynamic>? _profile;
+  int _chatCount = 0;
+  int _documentCount = 0;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfileData();
+  }
+
+  Future<void> _loadProfileData() async {
+    setState(() => _isLoading = true);
+    try {
+      final userId = ref.read(authRepositoryProvider).currentUser?.id;
+      if (userId != null) {
+        final dbRepo = ref.read(databaseRepositoryProvider);
+        final profile = await dbRepo.getProfile(userId);
+        final chats = await dbRepo.getChats(userId);
+        final documents = await dbRepo.getDocuments(userId);
+        
+        if (mounted) {
+          setState(() {
+            _profile = profile;
+            _chatCount = chats.length;
+            _documentCount = documents.length;
+            _isLoading = false;
+          });
+        }
+      } else {
+        setState(() => _isLoading = false);
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,345 +59,197 @@ class ProfileScreen extends StatelessWidget {
     final secondaryTextColor = isDark ? const Color(0xFF9DABB9) : const Color(0xFF637588);
     final surfaceColor = isDark ? const Color(0xFF1C252E) : Colors.white;
 
+    final userName = _profile?['full_name'] ?? 'User';
+    final userEmail = _profile?['email'] ?? '';
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_new, color: textColor),
+          onPressed: () => context.pop(),
+        ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.edit_square, color: AppTheme.primaryColor),
-            onPressed: () {},
+            icon: const Icon(Icons.settings, color: AppTheme.primaryColor),
+            onPressed: () => context.push('/settings'),
           ),
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          // Profile Header
-          Column(
-            children: [
-              Stack(
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : RefreshIndicator(
+              onRefresh: _loadProfileData,
+              child: ListView(
+                padding: const EdgeInsets.all(16),
                 children: [
-                  Container(
-                    width: 128,
-                    height: 128,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: AppTheme.primaryColor.withValues(alpha: 0.2),
-                        width: 4,
-                      ),
-                      image: const DecorationImage(
-                        image: NetworkImage(
-                          'https://lh3.googleusercontent.com/aida-public/AB6AXuATDupFqazycDScvAnyXx7ajTAzTKIp3thKkUgZk7KSdINc7X83Z4fHmXy9aLJrWBf8KwfmGHyit2Tx28Z9TA7imambd7VCvNefn5NHBVP2tDaBrC9p5OclZloBSk2tmSkHBPSsjM2aY5eKnO3fgANblatdJU9K-0HKYwbGIbLqNWhCWFQR57iwKbttHMDzKze0LwpOh7Dl81j4P7qe6Qyl2s0BBVyT_xcrOa5rlGAj1l6kff12fompmyHrlEtVNml6ICBJQUnKzIw',
-                        ),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                        color: AppTheme.primaryColor,
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: isDark ? AppTheme.backgroundDark : Colors.white,
-                          width: 2,
-                        ),
-                      ),
-                      child: const Icon(
-                        Icons.camera_alt,
-                        color: Colors.white,
-                        size: 16,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'Kwame Mensah',
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: AppTheme.primaryColor.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(
-                        color: AppTheme.primaryColor.withValues(alpha: 0.2),
-                      ),
-                    ),
-                    child: const Text(
-                      'LEGAL ASSOCIATE',
-                      style: TextStyle(
-                        color: AppTheme.primaryColor,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    'Professional User',
-                    style: TextStyle(
-                      color: secondaryTextColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
-
-          // Subscription Panel
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: surfaceColor,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(
-                color: isDark ? const Color(0xFF2D3B4E) : const Color(0xFFE2E8F0),
-              ),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  // Profile Header
+                  Column(
                     children: [
-                      Row(
-                        children: [
-                          const Icon(Icons.verified, color: AppTheme.primaryColor, size: 20),
-                          const SizedBox(width: 8),
-                          Text(
-                            'ArbiBot Pro',
-                            style: TextStyle(
-                              color: textColor,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
+                      Container(
+                        width: 120,
+                        height: 120,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppTheme.primaryColor.withValues(alpha: 0.1),
+                          border: Border.all(
+                            color: AppTheme.primaryColor.withValues(alpha: 0.2),
+                            width: 4,
                           ),
-                        ],
+                        ),
+                        child: Icon(
+                          Icons.person,
+                          size: 60,
+                          color: AppTheme.primaryColor,
+                        ),
                       ),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: 16),
                       Text(
-                        'Active • Renews Nov 24, 2024',
+                        userName,
                         style: TextStyle(
-                          color: secondaryTextColor,
-                          fontSize: 12,
+                          color: textColor,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      if (userEmail.isNotEmpty) ...[
+                        const SizedBox(height: 4),
+                        Text(
+                          userEmail,
+                          style: TextStyle(
+                            color: secondaryTextColor,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                  const SizedBox(height: 24),
+
+                  // Stats Cards
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _StatCard(
+                          icon: Icons.chat,
+                          count: _chatCount.toString(),
+                          label: 'Chats',
+                          color: AppTheme.primaryColor,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: _StatCard(
+                          icon: Icons.description,
+                          count: _documentCount.toString(),
+                          label: 'Documents',
+                          color: Colors.purple,
                         ),
                       ),
                     ],
                   ),
-                ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.primaryColor,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                  const SizedBox(height: 24),
+
+                  // Menu Items
+                  Container(
+                    decoration: BoxDecoration(
+                      color: surfaceColor,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Column(
+                      children: [
+                        _ProfileMenuItem(
+                          icon: Icons.chat_bubble_outline,
+                          title: 'My Chats',
+                          onTap: () => context.push('/chats'),
+                        ),
+                        _ProfileMenuItem(
+                          icon: Icons.folder_outlined,
+                          title: 'My Documents',
+                          onTap: () => context.push('/documents'),
+                        ),
+                        _ProfileMenuItem(
+                          icon: Icons.badge_outlined,
+                          title: 'CV Builder',
+                          onTap: () => context.push('/cv/profile'),
+                        ),
+                        _ProfileMenuItem(
+                          icon: Icons.settings_outlined,
+                          title: 'Settings',
+                          onTap: () => context.push('/settings'),
+                        ),
+                      ],
                     ),
                   ),
-                  child: const Text('Manage Subscription'),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 24),
+                  const SizedBox(height: 24),
 
-          // Stats Row
-          Row(
-            children: [
-              _StatCard(
-                icon: Icons.description,
-                value: '24',
-                label: 'Drafts',
-                color: AppTheme.primaryColor,
-                surfaceColor: surfaceColor,
-                textColor: textColor,
-                secondaryTextColor: secondaryTextColor,
-              ),
-              const SizedBox(width: 12),
-              _StatCard(
-                icon: Icons.bookmarks,
-                value: '148',
-                label: 'Citations',
-                color: Colors.green,
-                surfaceColor: surfaceColor,
-                textColor: textColor,
-                secondaryTextColor: secondaryTextColor,
-              ),
-              const SizedBox(width: 12),
-              _StatCard(
-                icon: Icons.badge,
-                value: '12',
-                label: 'CVs',
-                color: Colors.purple,
-                surfaceColor: surfaceColor,
-                textColor: textColor,
-                secondaryTextColor: secondaryTextColor,
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
-
-          // Menu Items
-          Container(
-            decoration: BoxDecoration(
-              color: surfaceColor,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(
-                color: isDark ? const Color(0xFF2D3B4E) : const Color(0xFFE2E8F0),
+                  // Logout Button
+                  TextButton.icon(
+                    onPressed: () async {
+                      await ref.read(authRepositoryProvider).signOut();
+                      if (context.mounted) {
+                        context.go('/welcome');
+                      }
+                    },
+                    icon: const Icon(Icons.logout, color: Colors.red),
+                    label: const Text('Log Out', style: TextStyle(color: Colors.red)),
+                  ),
+                ],
               ),
             ),
-            child: Column(
-              children: [
-                _ProfileMenuItem(
-                  icon: Icons.history_edu,
-                  title: 'My Drafts & History',
-                  onTap: () {},
-                  textColor: textColor,
-                  secondaryTextColor: secondaryTextColor,
-                ),
-                const Divider(height: 1),
-                _ProfileMenuItem(
-                  icon: Icons.library_books,
-                  title: 'Saved Citations',
-                  onTap: () {},
-                  textColor: textColor,
-                  secondaryTextColor: secondaryTextColor,
-                ),
-                const Divider(height: 1),
-                _ProfileMenuItem(
-                  icon: Icons.settings,
-                  title: 'Profile Settings',
-                  onTap: () => context.push('/settings'),
-                  textColor: textColor,
-                  secondaryTextColor: secondaryTextColor,
-                ),
-                const Divider(height: 1),
-                _ProfileMenuItem(
-                  icon: Icons.help,
-                  title: 'Help & Support',
-                  onTap: () {},
-                  textColor: textColor,
-                  secondaryTextColor: secondaryTextColor,
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 24),
-
-          // Sign Out
-          TextButton.icon(
-            onPressed: () => context.go('/login'),
-            icon: const Icon(Icons.logout, color: Colors.red),
-            label: const Text(
-              'Sign Out',
-              style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
-            ),
-            style: TextButton.styleFrom(
-              padding: const EdgeInsets.all(16),
-              backgroundColor: Colors.red.withValues(alpha: 0.1),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-          ),
-          
-          const SizedBox(height: 24),
-          Text(
-            'Disclaimer: ArbiBot generates drafts based on Ghanaian legal frameworks. All outputs are draft-only and require professional human review.',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: secondaryTextColor,
-              fontSize: 12,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
 
 class _StatCard extends StatelessWidget {
   final IconData icon;
-  final String value;
+  final String count;
   final String label;
   final Color color;
-  final Color surfaceColor;
-  final Color textColor;
-  final Color secondaryTextColor;
 
   const _StatCard({
     required this.icon,
-    required this.value,
+    required this.count,
     required this.label,
     required this.color,
-    required this.surfaceColor,
-    required this.textColor,
-    required this.secondaryTextColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        decoration: BoxDecoration(
-          color: surfaceColor,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: Theme.of(context).brightness == Brightness.dark
-                ? const Color(0xFF2D3B4E)
-                : const Color(0xFFE2E8F0),
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: isDark ? const Color(0xFF1C252E) : Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: isDark ? const Color(0xFF283039) : const Color(0xFFE5E7EB),
+        ),
+      ),
+      child: Column(
+        children: [
+          Icon(icon, color: color, size: 32),
+          const SizedBox(height: 8),
+          Text(
+            count,
+            style: TextStyle(
+              color: isDark ? Colors.white : const Color(0xFF111418),
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.1),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(icon, color: color, size: 20),
+          Text(
+            label,
+            style: TextStyle(
+              color: isDark ? const Color(0xFF9DABB9) : const Color(0xFF637588),
+              fontSize: 14,
             ),
-            const SizedBox(height: 8),
-            Text(
-              value,
-              style: TextStyle(
-                color: textColor,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              label,
-              style: TextStyle(
-                color: secondaryTextColor,
-                fontSize: 12,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -360,39 +259,31 @@ class _ProfileMenuItem extends StatelessWidget {
   final IconData icon;
   final String title;
   final VoidCallback onTap;
-  final Color textColor;
-  final Color secondaryTextColor;
 
   const _ProfileMenuItem({
     required this.icon,
     required this.title,
     required this.onTap,
-    required this.textColor,
-    required this.secondaryTextColor,
   });
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    
     return ListTile(
       onTap: onTap,
-      leading: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: Theme.of(context).brightness == Brightness.dark
-              ? Colors.white.withValues(alpha: 0.05)
-              : Colors.black.withValues(alpha: 0.05),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Icon(icon, color: secondaryTextColor, size: 20),
-      ),
+      leading: Icon(icon, color: AppTheme.primaryColor),
       title: Text(
         title,
         style: TextStyle(
-          color: textColor,
+          color: isDark ? Colors.white : const Color(0xFF111418),
           fontWeight: FontWeight.w500,
         ),
       ),
-      trailing: Icon(Icons.chevron_right, color: secondaryTextColor),
+      trailing: Icon(
+        Icons.chevron_right,
+        color: isDark ? const Color(0xFF9DABB9) : const Color(0xFF637588),
+      ),
     );
   }
 }

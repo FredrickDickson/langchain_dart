@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArbiBot - Home</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Custom scrollbar hiding for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white overflow-x-hidden pb-24">
+<!-- TopAppBar -->
+<div class="sticky top-0 z-30 flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-gray-200 dark:border-gray-800">
+<div class="flex size-12 shrink-0 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" data-alt="User profile avatar showing a professional person smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzp2bCHaTH2pdebscSzEsj--RzYgkIaOTxgqyNxxPikd1zpkD2U7h9RCgPZ2KC7fIgCTOsqGRqeb6qYu3nJUSX3-YfxQTl9SM-4DvsTtLHoE345xEafV4TLY3ac6nYCrY0pBuQ0inUppM_Se-j0a07uKQWNA0L7DlviwmdcrvnQSTj0OBCcNTKvEBhaWuyZYTXrqhzKboX35Lt255Akip8GUnsPizxcb61xhc2eEHej8cBi4vHGcoeLER_QlORlH7mbLTc7OBrL6Q");'></div>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">ArbiBot</h2>
+<div class="flex w-12 items-center justify-end absolute right-4">
+<button class="flex items-center justify-center rounded-lg size-10 bg-transparent text-[#111418] dark:text-white hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+</button>
+</div>
+</div>
+<!-- Trust Disclaimer Banner -->
+<div class="p-4">
+<div class="flex flex-col gap-4 rounded-xl bg-[#1c2127] border-l-4 border-yellow-500 p-4 shadow-lg relative overflow-hidden">
+<!-- Background decorative icon -->
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-[120px] text-white/5 pointer-events-none">gavel</span>
+<div class="flex items-start gap-3 z-10">
+<span class="material-symbols-outlined text-yellow-500 mt-1">warning</span>
+<div class="flex flex-col gap-1">
+<p class="text-white text-base font-bold leading-tight">Important Notice</p>
+<p class="text-gray-400 text-sm font-normal leading-normal">ArbiBot is an AI assistant. All outputs are drafts and must be reviewed by a qualified legal professional.</p>
+</div>
+</div>
+<button class="self-end flex items-center justify-center rounded-lg h-8 px-4 bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20 transition-colors text-xs font-bold uppercase tracking-wider w-fit z-10">
+                Learn More
+            </button>
+</div>
+</div>
+<!-- Headline: Quick Actions -->
+<h2 class="text-[#111418] dark:text-white tracking-tight text-[22px] font-bold leading-tight px-4 text-left pb-3 pt-2">Quick Actions</h2>
+<!-- ImageGrid: Quick Actions -->
+<div class="grid grid-cols-2 gap-3 p-4 pt-0">
+<!-- Legal Research -->
+<div class="group relative overflow-hidden rounded-xl bg-[#1c2127] aspect-[4/3] shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity" data-alt="Abstract image of law books and scales of justice" style='background-image: linear-gradient(180deg, rgba(19, 127, 236, 0.2) 0%, rgba(16, 25, 34, 0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBj8qzvT8S40hbOPdZLA4Vm2VCNeJAnG5dMHKBt9fSj6H3jF5C8d8ynJ6FYmrVTipaFBHggQOUFf4ZP2XbD-93fSaAmrbnaHW8fc_17bGSERL7bMz7EuP--IvSk5oK23Dmg2U9ZZ4Piv-2hOLPPkQkovcUd9jWlMSkIQoaUMxxlm8oJekLK9ZGnKgkvIcOXWsJ2u8VmhXcpj8RitPCeOjJ9Kc3UKxWpVMB9_b1981A52Y236AUtCijoHM9pFYKsh2EWNU2s8aYAxsY");'></div>
+<div class="absolute inset-0 flex flex-col justify-end p-4">
+<div class="bg-primary/20 p-2 rounded-lg w-fit mb-auto backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary">search</span>
+</div>
+<p class="text-white text-base font-bold leading-tight">Legal Research</p>
+</div>
+</div>
+<!-- Draft Document -->
+<div class="group relative overflow-hidden rounded-xl bg-[#1c2127] aspect-[4/3] shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity" data-alt="Close up of a fountain pen on a document" style='background-image: linear-gradient(180deg, rgba(19, 127, 236, 0.2) 0%, rgba(16, 25, 34, 0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuD6z-UzN_bZ2oF9T8pZur8MXAo3qVrxlcdq14kLcSGo6Fo5WUv9Zkvv_2Bq-zZDR30lc63AXZDG4Ixl_qD5SGLTkrxm_REwJCSm4x-0siFVRpK1xHBJl_YX8w2LKE0XlJS3w9xM0Qp5nyDG04LBc948b1xiiBCr90Kzx7IGyDqPQCQ1YZUkApF18lZz_qNZPdOu49XTSn-JrCe3yX3MA-n8a8SWQmwYoVYTmKqPPC3OnTRrha7ugdmK153bovRHd7HQCxKARuO2050");'></div>
+<div class="absolute inset-0 flex flex-col justify-end p-4">
+<div class="bg-primary/20 p-2 rounded-lg w-fit mb-auto backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary">edit_document</span>
+</div>
+<p class="text-white text-base font-bold leading-tight">Draft Document</p>
+</div>
+</div>
+<!-- CV Builder -->
+<div class="group relative overflow-hidden rounded-xl bg-[#1c2127] aspect-[4/3] shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity" data-alt="Clean desk workspace with resume layout" style='background-image: linear-gradient(180deg, rgba(19, 127, 236, 0.2) 0%, rgba(16, 25, 34, 0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRYLpTPRTSwWb3vEOdJ8L_Ewt_e6H7SB_IKev3M1vPRq6vKZ-fQEAgP7_Le7XC37eWa7D1p-fT9h1mMr9m61lfAk3UIAOMJvnj0qV_OXk6Fx31Tsg3XFlrUwS1zr7KXowQcJSs3IuU1pzzXJmT5I3v5JjPQ6G36SraEw5V1umnsrGEqYJqZR2zvwAd5WGJh0b7u6gOLnGrjiyGIKclhPTuswfNmdQp5Z0m0a_o_9rt5PspDu_LGfG_HKt_u4OS0vA_EdSxpfQsp9o");'></div>
+<div class="absolute inset-0 flex flex-col justify-end p-4">
+<div class="bg-primary/20 p-2 rounded-lg w-fit mb-auto backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary">badge</span>
+</div>
+<p class="text-white text-base font-bold leading-tight">CV Builder</p>
+</div>
+</div>
+<!-- Professional Discovery -->
+<div class="group relative overflow-hidden rounded-xl bg-[#1c2127] aspect-[4/3] shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity" data-alt="Network of professionals connecting globally" style='background-image: linear-gradient(180deg, rgba(19, 127, 236, 0.2) 0%, rgba(16, 25, 34, 0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBnJwzkTkFWzzbt35AY0rPi8gU7kS3tFJRtfGH3gXhavZGsyRz-AI5PjPK7paBmo1pVn3onaD2arwv7cCP1ZMv2DFbzn6BsL_2TMIughbo_lVrVSHjGzhtdselNxJf9NXya1EJ-HHAnUETJ4W3YZlb7hfkq4HidVLJ6hQ-fL6ThyFrPiGr-FCciw-3H7vz9jI6mY53ZYBK_QqnqYR43y_CQZ9Y4sXZ1kN09sJZD-OLoQSyYgrcKqx5raDPi-0Fk-VVjHe4T4CnYmKQ");'></div>
+<div class="absolute inset-0 flex flex-col justify-end p-4">
+<div class="bg-primary/20 p-2 rounded-lg w-fit mb-auto backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary">public</span>
+</div>
+<p class="text-white text-base font-bold leading-tight">Discovery</p>
+</div>
+</div>
+</div>
+<!-- Headline: Recent Sessions -->
+<div class="flex items-center justify-between px-4 pt-4 pb-2">
+<h2 class="text-[#111418] dark:text-white tracking-tight text-[22px] font-bold leading-tight">Recent Sessions</h2>
+<button class="text-primary text-sm font-semibold hover:text-primary/80">View All</button>
+</div>
+<!-- List: Recent Sessions -->
+<div class="flex flex-col gap-2 px-4 pb-4">
+<!-- Item 1 -->
+<div class="flex items-center justify-between gap-4 p-4 rounded-xl bg-white dark:bg-[#1c2127] shadow-sm active:bg-gray-50 dark:active:bg-[#252b33] cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-full size-10 bg-primary/10 shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]">gavel</span>
+</div>
+<div class="flex flex-col">
+<p class="text-[#111418] dark:text-white text-base font-bold leading-tight line-clamp-1">Land Dispute Research</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal">2h ago • Case Law Search</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between gap-4 p-4 rounded-xl bg-white dark:bg-[#1c2127] shadow-sm active:bg-gray-50 dark:active:bg-[#252b33] cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-full size-10 bg-purple-500/10 shrink-0">
+<span class="material-symbols-outlined text-purple-500 text-[20px]">history_edu</span>
+</div>
+<div class="flex flex-col">
+<p class="text-[#111418] dark:text-white text-base font-bold leading-tight line-clamp-1">Tenancy Agreement</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal">Yesterday • Document Draft</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between gap-4 p-4 rounded-xl bg-white dark:bg-[#1c2127] shadow-sm active:bg-gray-50 dark:active:bg-[#252b33] cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-full size-10 bg-green-500/10 shrink-0">
+<span class="material-symbols-outlined text-green-500 text-[20px]">person_search</span>
+</div>
+<div class="flex flex-col">
+<p class="text-[#111418] dark:text-white text-base font-bold leading-tight line-clamp-1">Corporate Tax Inquiry</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal">3 days ago • Research</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</div>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-4 z-40 flex items-center justify-center rounded-full size-14 bg-primary text-white shadow-lg shadow-primary/30 hover:bg-primary/90 hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[28px]">chat_bubble</span>
+</button>
+<!-- Bottom Navigation -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-white dark:bg-[#101922] border-t border-gray-200 dark:border-gray-800 pb-safe">
+<div class="flex items-center justify-around h-16">
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-primary">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-gray-400 hover:text-[#111418] dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">bookmark</span>
+<span class="text-[10px] font-medium">Saved</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-gray-400 hover:text-[#111418] dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">history</span>
+<span class="text-[10px] font-medium">History</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-gray-400 hover:text-[#111418] dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</div>
+</body></html>

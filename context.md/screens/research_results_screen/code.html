@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArbiBot - Research Results</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c2936",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for horizontal sections */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased min-h-screen flex flex-col relative pb-24">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center justify-between px-4 py-3">
+<button class="text-slate-900 dark:text-white flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
+</button>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight flex-1 text-center">Research Results</h2>
+<button class="text-slate-900 dark:text-white flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-[24px]">ios_share</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-3xl mx-auto px-4 pt-4 space-y-6">
+<!-- Original Query Card -->
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+<div class="flex items-start gap-3">
+<div class="mt-1 text-primary">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Original Query</p>
+<p class="text-slate-900 dark:text-white text-base font-medium leading-normal">
+                        Is it legal to terminate an employee without notice in Ghana based on recent case law?
+                    </p>
+</div>
+</div>
+</div>
+<!-- Status Chips -->
+<div class="flex flex-wrap gap-3">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800">
+<span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-[18px]">check_circle</span>
+<span class="text-emerald-800 dark:text-emerald-300 text-xs font-bold">High Confidence (92%)</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-100 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-800">
+<span class="material-symbols-outlined text-amber-600 dark:text-amber-400 text-[18px]">warning</span>
+<span class="text-amber-800 dark:text-amber-300 text-xs font-bold">Draft Mode</span>
+</div>
+</div>
+<!-- Answer Section -->
+<div class="space-y-4">
+<!-- Executive Summary -->
+<div class="bg-gradient-to-r from-primary/10 to-transparent p-4 rounded-xl border-l-4 border-primary">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold mb-2">Executive Summary</h3>
+<p class="text-slate-800 dark:text-gray-200 text-sm leading-relaxed">
+                    Under the <span class="font-semibold text-primary">Labour Act, 2003 (Act 651)</span>, termination without notice is generally prohibited unless specific conditions for summary dismissal are met. Employers are mandated to provide notice or pay in lieu of notice. However, verifiable gross misconduct can justify summary dismissal without notice.
+                </p>
+</div>
+<!-- Detailed Analysis -->
+<div class="prose dark:prose-invert max-w-none">
+<h4 class="text-slate-900 dark:text-white text-base font-bold mb-3 mt-6">Detailed Analysis</h4>
+<p class="text-slate-700 dark:text-slate-300 text-base leading-relaxed mb-4">
+                    According to <span class="font-semibold text-slate-900 dark:text-white">Section 15 of the Labour Act, 2003 (Act 651)</span>, a contract of employment may be terminated by either party, but reasonable notice must be given <sup class="text-primary font-bold cursor-pointer">[1]</sup>. The length of this notice depends on the duration of employment (e.g., monthly contracts require one month's notice).
+                </p>
+<p class="text-slate-700 dark:text-slate-300 text-base leading-relaxed mb-4">
+                    The only exception permitting termination without notice is "Summary Dismissal" under <span class="font-semibold text-slate-900 dark:text-white">Section 27</span>. This occurs when the employee has committed a fundamental breach of their duties, such as proven theft, fraud, or habitual absenteeism.
+                </p>
+<p class="text-slate-700 dark:text-slate-300 text-base leading-relaxed">
+                    In the case of <span class="italic font-medium text-slate-900 dark:text-white">Nartey-Tokoli &amp; Ors v. V.A.L.C.O</span>, the Supreme Court emphasized that even in summary dismissal, the employer must follow fair procedure and allow the employee a chance to be heard <sup class="text-primary font-bold cursor-pointer">[2]</sup>. Failure to do so may result in the termination being deemed "unfair" under Section 63, entitling the employee to compensation.
+                </p>
+</div>
+</div>
+<!-- Citations Carousel -->
+<div class="pt-4 border-t border-gray-200 dark:border-gray-800">
+<div class="flex items-center justify-between mb-3">
+<h4 class="text-slate-900 dark:text-white text-sm font-bold uppercase tracking-wider">Verifiable Sources</h4>
+<a class="text-primary text-xs font-semibold hover:underline" href="#">View All</a>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2 snap-x">
+<!-- Citation Card 1 -->
+<div class="snap-center min-w-[260px] bg-surface-light dark:bg-surface-dark p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary/50 transition-colors cursor-pointer group">
+<div class="flex items-start justify-between mb-2">
+<div class="bg-primary/10 text-primary p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+</div>
+<span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">Act 651</span>
+</div>
+<p class="text-slate-900 dark:text-white font-bold text-sm mb-1 group-hover:text-primary transition-colors">Labour Act, 2003</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs line-clamp-2">Section 15: Grounds for termination of employment...</p>
+<div class="mt-3 flex items-center text-primary text-xs font-bold">
+<span>Verify Source</span>
+<span class="material-symbols-outlined text-[14px] ml-1">open_in_new</span>
+</div>
+</div>
+<!-- Citation Card 2 -->
+<div class="snap-center min-w-[260px] bg-surface-light dark:bg-surface-dark p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary/50 transition-colors cursor-pointer group">
+<div class="flex items-start justify-between mb-2">
+<div class="bg-purple-500/10 text-purple-500 p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[20px]">balance</span>
+</div>
+<span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">Case Law</span>
+</div>
+<p class="text-slate-900 dark:text-white font-bold text-sm mb-1 group-hover:text-purple-400 transition-colors">Nartey-Tokoli v. V.A.L.C.O</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs line-clamp-2">Supreme Court ruling on fair termination procedures.</p>
+<div class="mt-3 flex items-center text-primary text-xs font-bold">
+<span>Verify Source</span>
+<span class="material-symbols-outlined text-[14px] ml-1">open_in_new</span>
+</div>
+</div>
+<!-- Citation Card 3 -->
+<div class="snap-center min-w-[260px] bg-surface-light dark:bg-surface-dark p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-primary/50 transition-colors cursor-pointer group">
+<div class="flex items-start justify-between mb-2">
+<div class="bg-blue-500/10 text-blue-500 p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[20px]">policy</span>
+</div>
+<span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">Constitution</span>
+</div>
+<p class="text-slate-900 dark:text-white font-bold text-sm mb-1 group-hover:text-blue-400 transition-colors">1992 Constitution</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs line-clamp-2">Article 19: Fair trial and administrative justice.</p>
+<div class="mt-3 flex items-center text-primary text-xs font-bold">
+<span>Verify Source</span>
+<span class="material-symbols-outlined text-[14px] ml-1">open_in_new</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Disclaimer -->
+<div class="pb-6">
+<p class="text-center text-xs text-slate-400 dark:text-slate-600">
+                ArbiBot can make mistakes. This is a draft for professional review only.
+            </p>
+</div>
+</main>
+<!-- Bottom Input Area (Fixed) -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-700 pb-safe pt-2 px-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-40">
+<div class="max-w-3xl mx-auto pb-6 pt-2">
+<div class="relative flex items-center">
+<div class="absolute left-3 text-slate-400">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<input class="w-full bg-gray-100 dark:bg-[#111418] text-slate-900 dark:text-white rounded-full py-3.5 pl-10 pr-12 text-base border-none focus:ring-2 focus:ring-primary placeholder:text-slate-500" placeholder="Ask a follow-up question..." type="text"/>
+<button class="absolute right-2 bg-primary hover:bg-primary/90 text-white rounded-full p-2 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[20px]">arrow_upward</span>
+</button>
+</div>
+</div>
+</footer>
+</body></html>
